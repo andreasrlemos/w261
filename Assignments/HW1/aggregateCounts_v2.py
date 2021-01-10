@@ -21,10 +21,49 @@ import sys
 
 
 ################# YOUR CODE HERE #################
+
+lastword = ""
+lastcount = 0
+iteration = 1
+linecount = 0
+
+# for line in sys.stdin:
+#     linecount = len(line.rstrip("\n"))
+
 for line in sys.stdin:
-    # extract words & counts
+    #linecount = len(line.rstrip("\n"))
     word, count  = line.split()
-    print("{}\t{}".format(word,count))
+    
+    if (iteration == 1):
+        lastword = word
+        iteration += 1
+
+    if (lastword != word):
+        print("{}\t{}".format(lastword,lastcount))
+        lastword = word
+        lastcount = int(count)
+        iteration += 1
+#         if (iteration == linecount):
+#             print("{}\t{}".format(lastword,lastcount))
+    else:
+        lastcount = lastcount + int(count)
+        lastword = word
+        iteration += 1
+        
+       
+
+    
+    
+### THIS WORKS, BUT DOESN"T AGGREGATE
+
+# for line in sys.stdin:
+#     # extract words & counts
+#     word, count  = line.split()
+#     print("{}\t{}".format(word,count))
+
+#############################
+    
+    
     # tally counts
     #counts[word] += int(count)
 # print counts
@@ -36,7 +75,7 @@ for line in sys.stdin:
 
 
 
-# ############### (END) YOUR CODE #################
+############### (END) YOUR CODE #################
 
 # # For reference only
 # from collections import defaultdict
@@ -54,4 +93,4 @@ for line in sys.stdin:
 # for wrd, count in counts.items():
 #     print("{}\t{}".format(wrd,count))
     
-# ########## (END) PROVIDED IMPLEMENTATION #########
+########## (END) PROVIDED IMPLEMENTATION #########
