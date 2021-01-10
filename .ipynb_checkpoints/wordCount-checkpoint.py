@@ -32,11 +32,15 @@ for line in sys.stdin:
     words = re.findall(r'[a-z]+', line.lower())
 
 ############ YOUR CODE HERE #########
+    
+    for word in words:
+        if word in counts:
+            counts[word] += 1
+        else:
+            counts[word] = 1
 
-
-
-
-
+for key, value in counts.items():
+    print(key, '\t', value)
 
 
 ############ (END) YOUR CODE #########

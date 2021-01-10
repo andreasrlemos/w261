@@ -93,7 +93,8 @@ if [ $# -eq 4 ]
     reducer=$4
     ################ YOUR CODE HERE #############
     #Q6c
-
+    
+    cat $countfiles | ./$reducer > $data.output
 
     ################# (END YOUR CODE)###########
 fi
