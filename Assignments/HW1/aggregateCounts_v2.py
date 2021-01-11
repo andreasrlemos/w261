@@ -50,47 +50,9 @@ for line in sys.stdin:
         lastword = word
         iteration += 1
         
-       
+      
 
     
     
-### THIS WORKS, BUT DOESN"T AGGREGATE
-
-# for line in sys.stdin:
-#     # extract words & counts
-#     word, count  = line.split()
-#     print("{}\t{}".format(word,count))
-
-#############################
-    
-    
-    # tally counts
-    #counts[word] += int(count)
-# print counts
-#for wrd, count in counts.items():
-    #print("{}\t{}".format(wrd,count))
-
-
-
-
-
-
 ############### (END) YOUR CODE #################
 
-# # For reference only
-# from collections import defaultdict
-
-# ########### PROVIDED IMPLEMENTATION ##############  
-
-# counts = defaultdict(int)
-# # stream over lines from Standard Input
-# for line in sys.stdin:
-#     # extract words & counts
-#     word, count  = line.split()
-#     # tally counts
-#     counts[word] += int(count)
-# # print counts
-# for wrd, count in counts.items():
-#     print("{}\t{}".format(wrd,count))
-    
-########## (END) PROVIDED IMPLEMENTATION #########
