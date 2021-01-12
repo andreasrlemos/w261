@@ -27,11 +27,7 @@ lastcount = 0
 iteration = 1
 linecount = 0
 
-# for line in sys.stdin:
-#     linecount = len(line.rstrip("\n"))
-
 for line in sys.stdin:
-    #linecount = len(line.rstrip("\n"))
     word, count  = line.split()
     
     if (iteration == 1):
@@ -43,16 +39,13 @@ for line in sys.stdin:
         lastword = word
         lastcount = int(count)
         iteration += 1
-#         if (iteration == linecount):
-#             print("{}\t{}".format(lastword,lastcount))
+
     else:
         lastcount = lastcount + int(count)
         lastword = word
         iteration += 1
-        
-      
 
-    
-    
+print("{}\t{}".format(lastword,lastcount))
+        
 ############### (END) YOUR CODE #################
 
