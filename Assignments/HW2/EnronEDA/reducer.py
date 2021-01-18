@@ -19,19 +19,25 @@ for line in sys.stdin:
     word, is_spam, count = line.split('\t')
     
 ############ YOUR CODE HERE #########
+    # tally counts from current word by is_spam value
+    if word == current_word:
+        if int(is_spam) == 0: 
+            ham_count += int(count)
+        else:
+            spam_count += int(count)
+    else: 
+        if current_word:
+            print(f'{current_word}\t{0}\t{ham_count}')
+            print(f'{current_word}\t{1}\t{spam_count}')
+        if int(is_spam) == 0:             
+            current_word, ham_count, spam_count  = word, 1, 0
+        else:
+            current_word, ham_count, spam_count  = word, 0, 1      
+        
 
 
-
-
-
-
-
-
-
-
-
-
-
+# don't forget the last record! 
+print(f'{current_word}\t{0}\t{ham_count}')
 
 
 ############ (END) YOUR CODE #########
