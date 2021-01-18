@@ -27,8 +27,10 @@ for line in sys.stdin:
             spam_count += int(count)
     else: 
         if current_word:
-            print(f'{current_word}\t{0}\t{ham_count}')
-            print(f'{current_word}\t{1}\t{spam_count}')
+            if ham_count != 0:
+                print(f'{current_word}\t{0}\t{ham_count}')
+            if spam_count != 0:
+                print(f'{current_word}\t{1}\t{spam_count}')
         if int(is_spam) == 0:             
             current_word, ham_count, spam_count  = word, 1, 0
         else:
