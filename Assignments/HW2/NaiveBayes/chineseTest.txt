@@ -1,0 +1,4 @@
+D5	1		Chinese Chinese Chinese Tokyo Japan
+D6	1		Beijing Shanghai Trade
+D7	0		Japan Macao Tokyo
+D8	0		Tokyo Japan Trade

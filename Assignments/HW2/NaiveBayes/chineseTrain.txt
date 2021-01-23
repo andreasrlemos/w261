@@ -1,0 +1,4 @@
+D1	1		Chinese Beijing Chinese
+D2	1		Chinese Chinese Shanghai
+D3	1		Chinese Macao
+D4	0		Tokyo Japan Chinese
