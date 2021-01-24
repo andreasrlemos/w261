@@ -52,27 +52,23 @@ for line in sys.stdin:
     ################# YOUR CODE HERE ################
     # TIP: try using MODEL.get(word, (0,0)) to access the tuple 
     # of log probabilities without throwing a KeyError!
-
-    logpHam = MODEL["ClassPriors"[1]]
-    logpSpam = 1
-    pred_class = 1
     
-#     logpHam, logpSpam, pred_class = 0.0,0.0,0.0
-#     for word in words:
-#         if MODEL.get(word):
-#             logpHam += MODEL[word[0]]
-#             logpSpam += MODEL[word[0]]
-#         else:
-#             pass
+    logpHam, logpSpam, pred_class = 0.0,0.0,0.0
+    for word in words:
+        if MODEL.get(word):
+            logpHam += MODEL[word][0]
+            logpSpam += MODEL[word][1]
+        else:
+            pass
     
-#     # Add PriorClass
-#     logpHam += MODEL['ClassPriors'[0]]
-#     logpSpam += MODEL['ClassPriors'[1]]
+    # Add PriorClass
+    logpHam += MODEL['ClassPriors'][0]
+    logpSpam += MODEL['ClassPriors'][1]
     
-#     if logpHam >= logpSpam:
-#         pred_class = 0
-#     else:
-#         pred_class = 1
+    if logpHam >= logpSpam:
+        pred_class = 0
+    else:
+        pred_class = 1
 
 
 

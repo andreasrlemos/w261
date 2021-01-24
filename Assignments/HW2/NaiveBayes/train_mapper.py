@@ -50,35 +50,55 @@ import os
 
 #################### YOUR CODE HERE ###################
 
+def getPartitionKey(word):
+    """ 
+    Helper function to assign partition key ('A', 'B', or 'C').
+    Args:  word (str) 
+    """
+    # Set thresholds for partitions based on first letter in Word
+    if word[0] < 'h': 
+        return  'A'
+    elif word[0] < 'p':
+        return  'B'
+    else:
+        return 'C'
+
+# initialize trackers
+current_word = None
+class0_partialCount, class1_partialCount = 0, 0
+totalWordsClass0, totalWordsClass1 = 0, 0
+countDocClass0, countDocClass1 = 0, 0
+
+# read from standard input
+for line in sys.stdin:
+    
+    # parse input and tokenize
+    docID, _class, subject, body = line.lower().split('\t')
+    words = re.findall(r'[a-z]+', subject + ' ' + body)
+    if int(_class) == 0:
+        countDocClass0 += 1
+    else:
+        countDocClass1 += 1
+    # emit words and count of 1 plus total counter
+    for word in words:
+        class0_partialCount, class1_partialCount = 0, 0
+        partitionKey = getPartitionKey(word)
+        
+        if int(_class) == 0:
+            class0_partialCount = 1
+            totalWordsClass0 += 1
+
+        else:
+            class1_partialCount = 1
+            totalWordsClass1 += 1
+
+        print(f"{partitionKey}\t{word}\t{class0_partialCount},{class1_partialCount}")
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# emit total count to each partition (note this is a partial total)
+for pkey in ['A','B','C']: 
+        print(f'{pkey}\t!totalWordCount\t{totalWordsClass0},{totalWordsClass1}')     
+        print(f'{pkey}\t!totalDocClassCount\t{countDocClass0},{countDocClass1}')
 
 
 #################### (END) YOUR CODE ###################
