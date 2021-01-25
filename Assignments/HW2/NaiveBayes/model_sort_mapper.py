@@ -12,8 +12,9 @@ OUTPUT:
 """
 import sys
 for line in sys.stdin:
-    word, payload = line.split()
+    word, payload = line.split('\t',1)
     ham_cProb, spam_cProb = payload.strip().split(',')[2:]
+    payload = payload.strip()
     
     if word != "ClassPriors":
     
@@ -22,3 +23,4 @@ for line in sys.stdin:
         else:
             maxClass, maxClassP = 'spam', spam_cProb
         print(f"{word}\t{payload}\t{maxClass}\t{maxClassP}")
+        #print(f"{maxClass}\t{maxClassP}\t{word}\t{payload}")
